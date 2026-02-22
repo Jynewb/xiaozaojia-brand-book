@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小造家 · 商业计划书</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --neon-cyan: #00F5FF;
+            --neon-orange: #FF6B35;
+            --neon-green: #00FF88;
+            --neon-purple: #A855F7;
+            --dark-bg: #050510;
+            --card-bg: rgba(20, 25, 50, 0.8);
+            --border: rgba(0, 245, 255, 0.15);
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: var(--dark-bg);
+            color: white;
+            line-height: 1.6;
+        }
+
+        /* ========== 封面 ========== */
+        .cover {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 40px;
+            position: relative;
+            background: 
+                radial-gradient(ellipse at 50% 0%, rgba(0, 245, 255, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 0% 100%, rgba(255, 107, 53, 0.08) 0%, transparent 40%),
+                var(--dark-bg);
+        }
+
+        .cover::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(0, 245, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 245, 255, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .cover-tag {
+            display: inline-block;
+            padding: 10px 25px;
+            border: 1px solid var(--neon-cyan);
+            border-radius: 30px;
+            font-size: 14px;
+            color: var(--neon-cyan);
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+        }
+
+        .cover-title {
+            font-size: clamp(60px, 15vw, 120px);
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 20px;
+            background: linear-gradient(180deg, #fff 30%, var(--neon-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cover-subtitle {
+            font-size: clamp(24px, 5vw, 40px);
+            font-weight: 300;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 60px;
+        }
+
+        .cover-stats {
+            display: flex;
+            gap: 60px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .cover-stat {
+            text-align: center;
+        }
+
+        .cover-stat-value {
+            font-size: clamp(40px, 8vw, 60px);
+            font-weight: 900;
+            color: var(--neon-cyan);
+        }
+
+        .cover-stat-label {
+            font-size: 16px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 5px;
+        }
+
+        .cover-meta {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: rgba(255,255,255,0.3);
+            font-size: 14px;
+        }
+
+        /* ========== 页面导航 ========== */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(5, 5, 16, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 40px;
+        }
+
+        .nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 40px;
+            overflow-x: auto;
+            padding: 15px 0;
+        }
+
+        .nav-item {
+            white-space: nowrap;
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .nav-item:hover {
+            color: var(--neon-cyan);
+        }
+
+        /* ========== 章节 ========== */
+        section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+        }
+
+        .section-num {
+            font-size: 14px;
+            color: var(--neon-cyan);
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 6vw, 48px);
+            font-weight: 900;
+            line-height: 1.3;
+        }
+
+        .section-desc {
+            font-size: 20px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 20px;
+            max-width: 800px;
+        }
+
+        /* ========== 卡片网格 ========== */
+        .card-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .card-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 1000px) {
+            .card-grid-2, .card-grid-3, .card-grid-4 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 35px 30px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--neon-cyan);
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .card-text {
+            font-size: 16px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+        }
+
+        /* ========== 数据卡片 ========== */
+        .data-card {
+            text-align: center;
+            padding: 40px 25px;
+        }
+
+        .data-value {
+            font-size: clamp(36px, 7vw, 56px);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .data-label {
+            font-size: 18px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* ========== 表格 ========== */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 30px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+
+        th {
+            text-align: left;
+            padding: 18px 20px;
+            background: rgba(0, 245, 255, 0.1);
+            font-weight: 700;
+            color: var(--neon-cyan);
+            border-bottom: 2px solid var(--neon-cyan);
+        }
+
+        td {
+            padding: 18px 20px;
+            border-bottom: 1px solid var(--border);
+            color: rgba(255,255,255,0.8);
+        }
+
+        tr:hover td {
+            background: rgba(0, 245, 255, 0.03);
+        }
+
+        /* ========== 时间线 ========== */
+        .timeline {
+            position: relative;
+            padding-left: 60px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--neon-cyan), var(--neon-orange), var(--neon-purple));
+        }
+
+        .timeline-phase {
+            position: relative;
+            margin-bottom: 50px;
+            padding: 30px 35px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .timeline-phase::before {
+            content: '';
+            position: absolute;
+            left: -46px;
+            top: 35px;
+            width: 16px;
+            height: 16px;
+            background: var(--neon-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--neon-cyan);
+        }
+
+        .timeline-phase:nth-child(2)::before { background: var(--neon-orange); box-shadow: 0 0 20px var(--neon-orange); }
+        .timeline-phase:nth-child(3)::before { background: var(--neon-green); box-shadow: 0 0 20px var(--neon-green); }
+        .timeline-phase:nth-child(4)::before { background: var(--neon-purple); box-shadow: 0 0 20px var(--neon-purple); }
+
+        .phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .phase-name {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .phase-time {
+            font-size: 14px;
+            color: var(--neon-cyan);
+            padding: 6px 16px;
+            border: 1px solid var(--neon-cyan);
+            border-radius: 20px;
+        }
+
+        .phase-goal {
+            font-size: 18px;
+            color: var(--neon-orange);
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 3px solid var(--neon-orange);
+        }
+
+        .phase-tasks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .task-item {
+            display: flex;
+            gap: 10px;
+            font-size: 15px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .task-item::before {
+            content: '→';
+            color: var(--neon-cyan);
+        }
+
+        /* ========== 盈利表格 ========== */
+        .profit-table {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+
+        .profit-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .profit-row:last-child {
+            border-bottom: none;
+        }
+
+        .profit-label {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .profit-value {
+            font-weight: 700;
+        }
+
+        .profit-value.highlight {
+            color: var(--neon-green);
+            font-size: 24px;
+        }
+
+        /* ========== 风险矩阵 ========== */
+        .risk-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        @media (max-width: 800px) {
+            .risk-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .risk-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 30px;
+            border-left: 4px solid var(--neon-orange);
+        }
+
+        .risk-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .risk-title::before {
+            content: '⚠️';
+        }
+
+        .risk-solution {
+            font-size: 15px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+            padding-left: 30px;
+        }
+
+        /* ========== 团队架构 ========== */
+        .team-chart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .team-box {
+            background: var(--card-bg);
+            border: 1px solid var(--neon-cyan);
+            border-radius: 12px;
+            padding: 20px 40px;
+            text-align: center;
+        }
+
+        .team-box.main {
+            border-width: 2px;
+            box-shadow: 0 0 40px rgba(0, 245, 255, 0.2);
+        }
+
+        .team-role {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .team-count {
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .team-children {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+        }
+
+        .team-children::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            width: 2px;
+            height: 15px;
+            background: var(--neon-cyan);
+        }
+
+        /* ========== 强调块 ========== */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid var(--neon-cyan);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .highlight-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .highlight-text {
+            font-size: 18px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* ========== 页脚 ========== */
+        footer {
+            text-align: center;
+            padding: 60px 40px;
+            border-top: 1px solid var(--border);
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* ========== 动画 ========== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========== 打印 ========== */
+        @media print {
+            body { background: white; color: #1a1a1a; }
+            .nav { display: none; }
+            .card { border-color: #ddd; background: #f9f9f9; }
+            .data-value { color: #0088cc; -webkit-text-fill-color: #0088cc; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== 封面 ========== -->
+    <div class="cover">
+        <div class="cover-content">
+            <div class="cover-tag">商业计划书 · BUSINESS PLAN</div>
+            <h1 class="cover-title">小造家</h1>
+            <p class="cover-subtitle">3D打印益智早教玩具 · 轻资产连锁项目</p>
+            
+            <div class="cover-stats">
+                <div class="cover-stat">
+                    <div class="cover-stat-value">3万</div>
+                    <div class="cover-stat-label">启动成本</div>
+                </div>
+                <div class="cover-stat">
+                    <div class="cover-stat-value">1个节日</div>
+                    <div class="cover-stat-label">回本周期</div>
+                </div>
+                <div class="cover-stat">
+                    <div class="cover-stat-value">57%</div>
+                    <div class="cover-stat-label">单日净利率</div>
+                </div>
+                <div class="cover-stat">
+                    <div class="cover-stat-value">170万+</div>
+                    <div class="cover-stat-label">年净利润目标</div>
+                </div>
+            </div>
+        </div>
+        <div class="cover-meta">
+            2026年2月 · 机密文件
+        </div>
+    </div>
+
+    <!-- ========== 导航 ========== -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <span class="nav-item">01 项目概述</span>
+            <span class="nav-item">02 市场分析</span>
+            <span class="nav-item">03 产品体系</span>
+            <span class="nav-item">04 运营模式</span>
+            <span class="nav-item">05 盈利模型</span>
+            <span class="nav-item">06 团队架构</span>
+            <span class="nav-item">07 风险控制</span>
+            <span class="nav-item">08 推进计划</span>
+        </div>
+    </nav>
+
+    <!-- ========== 01 项目概述 ========== -->
+    <section>
+        <div class="section-header">
+            <div class="section-num">01</div>
+            <h2 class="section-title">项目概述</h2>
+            <p class="section-desc">以3D打印柔性供应链为核心壁垒，主打高性价比益智早教玩具，聚焦节假日亲子消费刚需场景</p>
+        </div>
+
+        <div class="highlight-box fade-in">
+            <div class="highlight-title">核心价值主张</div>
+            <div class="highlight-text">
+                通过「标准化摊位 + 规模化铺点」的轻量化连锁模式<br>
+                以 50-100 元低决策门槛客单价<br>
+                打造「轻资产启动、快回本盈利、强复制扩张」的亲子消费新品牌
+            </div>
+        </div>
+
+        <div class="card-grid-3">
+            <div class="card fade-in">
+                <div class="card-icon">🎯</div>
+                <div class="card-title">精准场景</div>
+                <div class="card-text">聚焦节假日、周末黄金时段，只做高流量亲子场景，避免日常低效运营</div>
+            </div>
+            <div class="card fade-in">
+                <div class="card-icon">⚡</div>
+                <div class="card-title">供应链优势</div>
+                <div class="card-text">3D打印柔性生产，按需生产无库存，新品开发周期短，快速响应市场</div>
+            </div>
+            <div class="card fade-in">
+                <div class="card-icon">💡</div>
+                <div class="card-title">产品差异化</div>
+                <div class="card-text">跳出"低价玩具"内卷，以"早教价值"构建溢价，精准击中家长核心需求</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 02 市场分析 ========== -->
+    <section>
+        <div class="section-header">
+            <div class="section-num">02</div>
+            <h2 class="section-title">市场分析</h2>
+        </div>
+
+        <div class="card-grid-4">
+            <div class="card data-card fade-in">
+                <div class="data-value">4万亿</div>
+                <div class="data-label">母婴亲子市场规模</div>
+            </div>
+            <div class="card data-card fade-in">
+                <div class="data-value">千亿</div>
+                <div class="data-label">儿童玩具市场规模</div>
+            </div>
+            <div class="card data-card fade-in">
+                <div class="data-value">15%+</div>
+                <div class="data-label">益智玩具年增速</div>
+            </div>
+            <div class="card data-card fade-in">
+                <div class="data-value">刚需</div>
+                <div class="data-label">亲子消费属性</div>
+            </div>
+        </div>
+
+        <h3 style="font-size: 24px; margin: 60px 0 30px;">行业痛点 vs 我们的解决方案</h3>
+        
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 40%">行业痛点</th>
+                        <th>小造家解决方案</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>商场玩具溢价严重，200-300元，性价比极低</td>
+                        <td>3D打印柔性生产，同品质售价仅为商场 1/3</td>
+                    </tr>
+                    <tr>
+                        <td>线上玩具无法体验，孩子不喜欢易闲置</td>
+                        <td>现场体验，孩子自主选品，喜欢再买</td>
+                    </tr>
+                    <tr>
+                        <td>普通地摊玩具同质化，无品牌无价值背书</td>
+                        <td>统一品牌形象，升级为"早教产品"，建立信任</td>
+                    </tr>
+                    <tr>
+                        <td>传统进货压货严重，新品迭代慢</td>
+                        <td>3D打印按需生产，小批量试错，无库存压力</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ========== 03 产品体系 ========== -->
+    <section>
+        <div class="section-header">
+            <div class="section-num">03</div>
+            <h2 class="section-title">产品体系规划</h2>
+            <p class="section-desc">核心客单价 50-100 元，主打"孩子一眼喜欢、家长觉得超值"</p>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>产品层级</th>
+                        <th>产品示例</th>
+                        <th>客单价</th>
+                        <th>核心作用</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong style="color: var(--neon-cyan)">引流爆款</strong></td>
+                        <td>竹蜻蜓、简易拼图、节日小摆件</td>
+                        <td>39-59元</td>
+                        <td>拉新引流，降低决策门槛</td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: var(--neon-orange)">核心利润款</strong></td>
+                        <td>字母/数字益智拼图、3D立体拼装、专注力训练</td>
+                        <td>69-89元</td>
+                        <td>核心营收，毛利80%+</td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: var(--neon-purple)">节日定制款</strong></td>
+                        <td>春节福字、中秋主题、六一限定、开学季</td>
+                        <td>79-99元</td>
+                        <td>对应场景，集中冲量</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 style="font-size: 22px; margin: 50px 0 25px;">供应链规划</h3>
+        <div class="card-grid-3">
+            <div class="card fade-in">
+                <div class="card-title">启动期</div>
+                <div class="card-text">4台入门级3D打印机（单台3000元）<br>满足10个摊位供货需求</div>
+            </div>
+            <div class="card fade-in">
+                <div class="card-title">成长期</div>
+                <div class="card-text">搭建自有生产团队<br>根据销量快速调整产品结构</div>
+            </div>
+            <div class="card fade-in">
+                <div class="card-title">规模化期</div>
+                <div class="card-text">爆款开模量产<br>进一步降低成本</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 04 运营模式 ========== -->
+    <section>
+        <div class="section-header">
+            <div class="section-num">04</div>
+            <h2 class="section-title">运营模式</h2>
+        </div>
+
+        <h3 style="font-size: 22px; margin-bottom: 25px;">核心运营场景</h3>
+        <div class="card-grid-2">
+            <div class="card fade-in">
+                <div class="card-title">🎯 优先场景</div>
+                <div class="card-text">
+                    • 节假日/周末商圈市集、商场外广场<br>
+                    • 城市公园、景区、游乐园周边<br>
+                    • 大型社区市集、亲子活动现场<br>
+                    • 夜市、步行街等人流密集区
+                </div>
+            </div>
+            <div class="card fade-in">
+                <div class="card-title">⏰ 运营策略</div>
+                <div class="card-text">
+                    • 只做黄金时段运营<br>
+                    • 避免日常低效摆摊<br>
+                    • 最大化投入产出比<br>
+                    • 单摊位1人即可运营
+                </div>
+            </div>
+        </div>
+
+        <h3 style="font-size: 22px; margin: 50px 0 25px;">标准化运营体系</h3>
+        <div class="card-grid-4">
+            <div class="card fade-in">
+                <div class="card-icon">🎨</div>
+                <div class="card-title">品牌标准化</div>
+                <div class="card-text">统一logo、展架、海报、陈列、价签</div>
+            </div>
+            <div class="card fade-in">
+                <div class="card-icon">💬</div>
+                <div class="card-title">销售标准化</div>
+                <div class="card-text">统一话术手册，培训考核后上岗</div>
+            </div>
+            <div class="card fade-in">
+                <div class="card-icon">👥</div>
+                <div class="card-title">人员标准化</div>
+                <div class="card-text">底薪100元 + 销售额15%提成</div>
+            </div>
+            <div class="card fade-in">
+                <div class="card-icon">📊</div>
+                <div class="card-title">管理标准化</div>
+                <div class="card-text">1人管10点位，每日复盘数据</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 05 盈利模型 ========== -->
+    <section>
+        <div class="section-header">
+            <div class="section-num">05</div>
+            <h2 class="section-title">盈利模型</h2>
+        </div>
+
+        <h3 style="font-size: 22px; margin-bottom: 25px;">单摊位单日模型</h3>
+        <div class="profit-table fade-in">
+            <div class="profit-row">
+                <span class="profit-label">日销售额（目标）</span>
+                <span class="profit-value" style="color: var(--neon-cyan)">2,000元</span>
+            </div>
+            <div class="profit-row">
+                <span class="profit-label">产品成本（15%）</span>
+                <span class="profit-value">- 300元</span>
+            </div>
+            <div class="profit-row">
+                <span class="profit-label">人员成本</span>
+                <span class="profit-value">- 250元</span>
+            </div>
+            <div class="profit-row">
+                <span class="profit-label">摊位费</span>
+                <span class="profit-value">- 300元</span>
+            </div>
+            <div class="profit-row">
+                <span class="profit-label"><strong>单摊位单日净利润</strong></span>
+                <span class="profit-value highlight">1,150元</span>
+            </div>
+        </div>
+
+        <h3 style="font-size: 22px; margin: 50px 0 25px;">启动成本（试点期 · 10个摊位）</h3>
+        <div class="profit-table fade-in">
+            <div class="profit-row">
+                <span class="profit-label">3D打印设备（4台）</span>
+                <span class="profit-value">12,000元</span>
+            </div>
+            <div class="profit-row">
+                <span class="profit-label">耗材与首批备货</span>
+                <span class="profit-value">3,000元</span>
+            </div>
+            <div class="profit-row">
+                <span class="profit-label">摊位标准化物料（10套）</span>
+                <span class="profit-value">3,000元</span>
+            </div>
+            <div class="profit-row">
+                <span class="profit-label">首次摊位费（10个 × 3天 × 300元）</span>
+                <span class="profit-value">9,000元</span>
+            </div>
+            <div class="profit-row">
+                <span class="profit-label">人员培训与备用金</span>
+                <span class="profit-value">3,000元</span>
+            </div>
+            <div class="profit-row">
+                <span class="profit-label"><strong>合计</strong></span>
+                <span class="profit-value highlight">30,000元</span>
+            </div>
+        </div>
+
+        <h3 style="font-size: 22px; margin: 50px 0 25px;">盈利测算</h3>
+        <div class="card-grid-2">
+            <div class="card fade-in">
+                <div class="card-title">📊 试点期（10个摊位 · 单个3天节假日）</div>
+                <div class="card-text" style="margin-top: 20px;">
+                    <strong>营收：</strong>10摊 × 2000元/天 × 3天 = <strong style="color: var(--neon-green)">60,000元</strong><br><br>
+                    <strong>成本：</strong><br>
+                    • 产品成本（15%）：9,000元<br>
+                    • 摊位费：9,000元<br>
+                    • 人员成本：7,500元<br><br>
+                    <strong>单节日净利润：</strong><span style="color: var(--neon-green); font-size: 24px;">34,500元</span>
+                </div>
+            </div>
+            <div class="card fade-in">
+                <div class="card-title">📈 规模化期（50个摊位 · 全年）</div>
+                <div class="card-text" style="margin-top: 20px;">
+                    <strong>单节日营收：</strong>50摊 × 2000元/天 × 3天 = <strong style="color: var(--neon-green)">300,000元</strong><br><br>
+                    <strong>单节日净利润：</strong><span style="color: var(--neon-green)">约 172,500元</span><br><br>
+                    <strong>全年测算（10个核心节假日）：</strong><br>
+                    春节、五一、六一、暑假、国庆、中秋等<br><br>
+                    <strong>年净利润目标：</strong><span style="color: var(--neon-green); font-size: 28px;">170万+</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="highlight-box fade-in" style="margin-top: 40px;">
+            <div class="highlight-title">💰 回本周期</div>
+            <div class="highlight-text">
+                启动成本 <strong style="font-size: 28px;">30,000元</strong><br>
+                单节日净利润 <strong style="font-size: 28px; color: var(--neon-green);">34,500元</strong><br><br>
+                <strong style="font-size: 32px; color: var(--neon-green);">1个节假日</strong> 即可回本并盈利
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 06 团队架构 ========== -->
+    <section>
+        <div class="section-header">
+            <div class="section-num">06</div>
+            <h2 class="section-title">团队架构</h2>
+        </div>
+
+        <div class="team-chart fade-in">
+            <div class="team-box main">
+                <div class="team-role">项目负责人</div>
+                <div class="team-count">统筹规划 · 资源对接 · 供应链管理</div>
+            </div>
+            <div class="team-children">
+                <div class="team-box">
+                    <div class="team-role">运营主管</div>
+                    <div class="team-count">摊位管理 · 培训 · 数据复盘</div>
+                </div>
+                <div class="team-box">
+                    <div class="team-role">供应链主管</div>
+                    <div class="team-count">生产 · 产品开发 · 库存管理</div>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="font-size: 22px; margin: 50px 0 25px;">分阶段人员配置</h3>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>阶段</th>
+                        <th>全职人员</th>
+                        <th>兼职摊主</th>
+                        <th>管理模式</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>试点期</strong>（10个摊位）</td>
+                        <td>2人</td>
+                        <td>10人</td>
+                        <td>负责人直管，1对1培训</td>
+                    </tr>
+                    <tr>
+                        <td><strong>成长期</strong>（20个摊位）</td>
+                        <td>3人</td>
+                        <td>20人</td>
+                        <td>分2区域，1人管10点位</td>
+                    </tr>
+                    <tr>
+                        <td><strong>规模化期</strong>（50个摊位）</td>
+                        <td>6人</td>
+                        <td>50人</td>
+                        <td>分5区域，建立标准化制度</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ========== 07 风险控制 ========== -->
+    <section>
+        <div class="section-header">
+            <div class="section-num">07</div>
+            <h2 class="section-title">风险控制</h2>
+        </div>
+
+        <div class="risk-grid">
+            <div class="risk-card fade-in">
+                <div class="risk-title">点位拓展风险</div>
+                <div class="risk-solution">
+                    1. 提前1个月对接节假日点位，拿批量打包价<br>
+                    2. 优先选择社区、公园等低租金点位<br>
+                    3. 提前踩点调研人流，筛选亲子家庭占比高的点位
+                </div>
+            </div>
+            <div class="risk-card fade-in">
+                <div class="risk-title">产品同质化风险</div>
+                <div class="risk-solution">
+                    1. 每周更新新品，保持产品差异化<br>
+                    2. 注册品牌商标，强化"早教益智"心智<br>
+                    3. 推出独家定制款，拒绝同质化内卷
+                </div>
+            </div>
+            <div class="risk-card fade-in">
+                <div class="risk-title">人员管理风险</div>
+                <div class="risk-solution">
+                    1. 制定标准化销售手册，培训考核后上岗<br>
+                    2. 高提成激励，筛选优质摊主长期合作<br>
+                    3. 建立淘汰机制，业绩不达标及时更换
+                </div>
+            </div>
+            <div class="risk-card fade-in">
+                <div class="risk-title">库存积压风险</div>
+                <div class="risk-solution">
+                    1. 3D打印按需生产，小批量试卖<br>
+                    2. 滞销产品跨点位调配或组合促销<br>
+                    3. 节日定制款小批量生产，避免节后积压
+                </div>
+            </div>
+            <div class="risk-card fade-in">
+                <div class="risk-title">合规经营风险</div>
+                <div class="risk-solution">
+                    1. 优先选择正规市集、商场等有资质的点位<br>
+                    2. 选用环保PLA耗材，确保产品安全<br>
+                    3. 不销售侵权、违规产品
+                </div>
+            </div>
+            <div class="risk-card fade-in">
+                <div class="risk-title">天气因素风险</div>
+                <div class="risk-solution">
+                    1. 优先选择室内或半室内点位<br>
+                    2. 准备防雨防晒物料<br>
+                    3. 恶劣天气及时调整计划
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 08 推进计划 ========== -->
+    <section>
+        <div class="section-header">
+            <div class="section-num">08</div>
+            <h2 class="section-title">推进计划</h2>
+            <p class="section-desc">从试点验证到规模化复制，分四阶段推进</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-phase fade-in">
+                <div class="phase-header">
+                    <span class="phase-name">第一阶段：筹备试点期</span>
+                    <span class="phase-time">第1-4周</span>
+                </div>
+                <div class="phase-goal">核心目标：落地10个试点摊位，完成首次节日销售，验证盈利模型</div>
+                <div class="phase-tasks">
+                    <div class="task-item">确定品牌名称、定位与slogan</div>
+                    <div class="task-item">调研3D打印供应链，确定生产模式</div>
+                    <div class="task-item">完成产品选型与首批打样</div>
+                    <div class="task-item">调研本地点位，列出20个备选</div>
+                    <div class="task-item">设计品牌logo、摊位物料</div>
+                    <div class="task-item">敲定10个试点点位，签约</div>
+                    <div class="task-item">招聘培训兼职摊主</div>
+                    <div class="task-item">完成首次节日销售</div>
+                </div>
+            </div>
+
+            <div class="timeline-phase fade-in">
+                <div class="phase-header">
+                    <span class="phase-name">第二阶段：模型跑通期</span>
+                    <span class="phase-time">第5-8周</span>
+                </div>
+                <div class="phase-goal">核心目标：打磨最优盈利模型，完成20个点位复制</div>
+                <div class="phase-tasks">
+                    <div class="task-item">试点复盘，筛选爆款，淘汰滞销品</div>
+                    <div class="task-item">优化销售话术、摊位陈列</div>
+                    <div class="task-item">筛选优质摊主，建立长期合作</div>
+                    <div class="task-item">优化供应链，降低生产成本</div>
+                    <div class="task-item">开发5-10款新品</div>
+                    <div class="task-item">拓展至20个点位</div>
+                    <div class="task-item">输出标准化运营SOP</div>
+                </div>
+            </div>
+
+            <div class="timeline-phase fade-in">
+                <div class="phase-header">
+                    <span class="phase-name">第三阶段：规模化复制期</span>
+                    <span class="phase-time">第9-16周</span>
+                </div>
+                <div class="phase-goal">核心目标：单城市50个点位，实现规模化盈利</div>
+                <div class="phase-tasks">
+                    <div class="task-item">搭建全职运营团队，划分5个区域</div>
+                    <div class="task-item">完成50个点位签约</div>
+                    <div class="task-item">供应链升级，提升产能</div>
+                    <div class="task-item">搭建销售数据实时监控体系</div>
+                    <div class="task-item">大型节假日销售爆破</div>
+                    <div class="task-item">搭建私域流量池</div>
+                </div>
+            </div>
+
+            <div class="timeline-phase fade-in">
+                <div class="phase-header">
+                    <span class="phase-name">第四阶段：品牌升级期</span>
+                    <span class="phase-time">第17-24周</span>
+                </div>
+                <div class="phase-goal">核心目标：从地摊连锁升级为益智早教玩具品牌</div>
+                <div class="phase-tasks">
+                    <div class="task-item">完成品牌商标注册</div>
+                    <div class="task-item">升级品牌形象</div>
+                    <div class="task-item">搭建线上电商渠道</div>
+                    <div class="task-item">开发企业定制业务</div>
+                    <div class="task-item">制定加盟/代理政策</div>
+                    <div class="task-item">多城市拓展</div>
+                    <div class="task-item">全渠道盈利模型</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 页脚 ========== -->
+    <footer>
+        <p>© 2026 小造家 · 机密文件 · 仅供内部使用</p>
+        <p style="margin-top: 10px; color: rgba(255,255,255,0.2);">玩出创造力，越玩越聪明</p>
+    </footer>
+
+    <script>
+        // Scroll animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
