@@ -6,20 +6,15 @@
     <title>小造家 × 商场战略合作</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --neon-cyan: #00F5FF;
             --neon-orange: #FF6B35;
             --neon-pink: #FF0080;
+            --neon-purple: #A855F7;
             --dark-bg: #050510;
             --card-bg: rgba(20, 25, 50, 0.8);
         }
-
         body {
             font-family: 'Noto Sans SC', sans-serif;
             background: var(--dark-bg);
@@ -28,7 +23,7 @@
             min-height: 100vh;
         }
 
-        /* ========== HERO - 极致冲击 ========== */
+        /* ========== HERO ========== */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -44,32 +39,21 @@
                 radial-gradient(ellipse at 20% 80%, rgba(255, 0, 128, 0.1) 0%, transparent 40%),
                 var(--dark-bg);
         }
-
-        /* 动态网格背景 */
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             background-image: 
                 linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
             animation: gridMove 20s linear infinite;
         }
-
         @keyframes gridMove {
             0% { transform: translateY(0); }
             100% { transform: translateY(50px); }
         }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-        }
-
+        .hero-content { position: relative; z-index: 10; }
         .brand-badge {
             display: inline-block;
             padding: 12px 30px;
@@ -82,12 +66,10 @@
             box-shadow: 0 0 40px rgba(0, 245, 255, 0.5);
             animation: pulse 2s ease-in-out infinite;
         }
-
         @keyframes pulse {
             0%, 100% { box-shadow: 0 0 40px rgba(0, 245, 255, 0.5); }
             50% { box-shadow: 0 0 60px rgba(0, 245, 255, 0.8); }
         }
-
         .brand-name {
             font-size: clamp(80px, 20vw, 180px);
             font-weight: 900;
@@ -99,7 +81,6 @@
             text-shadow: 0 0 100px rgba(0, 245, 255, 0.5);
             letter-spacing: -5px;
         }
-
         .brand-name span {
             display: block;
             font-size: 0.35em;
@@ -108,7 +89,6 @@
             margin-top: 10px;
             opacity: 0.7;
         }
-
         .slogan {
             font-size: clamp(28px, 6vw, 56px);
             font-weight: 700;
@@ -116,9 +96,7 @@
             position: relative;
             display: inline-block;
         }
-
-        .slogan::before,
-        .slogan::after {
+        .slogan::before, .slogan::after {
             content: '◆';
             position: absolute;
             top: 50%;
@@ -126,44 +104,18 @@
             color: var(--neon-cyan);
             font-size: 0.5em;
         }
-
         .slogan::before { left: -50px; }
         .slogan::after { right: -50px; }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            margin-top: 60px;
-            flex-wrap: wrap;
+        .hero-desc {
+            font-size: clamp(18px, 4vw, 28px);
+            color: rgba(255,255,255,0.7);
+            max-width: 600px;
+            margin: 20px auto 0;
+            line-height: 1.6;
         }
 
-        .hero-stat {
-            text-align: center;
-        }
-
-        .hero-stat-value {
-            font-size: clamp(48px, 10vw, 80px);
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-orange) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1;
-        }
-
-        .hero-stat-label {
-            font-size: 18px;
-            color: rgba(255,255,255,0.6);
-            margin-top: 10px;
-        }
-
-        /* ========== SECTION 通用样式 ========== */
-        section {
-            padding: 100px 40px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
+        /* ========== SECTION 通用 ========== */
+        section { padding: 100px 40px; max-width: 1400px; margin: 0 auto; }
         .section-label {
             font-size: 14px;
             color: var(--neon-cyan);
@@ -171,7 +123,6 @@
             text-transform: uppercase;
             margin-bottom: 20px;
         }
-
         .section-title {
             font-size: clamp(36px, 8vw, 64px);
             font-weight: 900;
@@ -179,12 +130,11 @@
             line-height: 1.2;
         }
 
-        /* ========== 核心定位 - 大字冲击 ========== */
+        /* ========== 核心定位 ========== */
         .positioning {
             text-align: center;
             background: linear-gradient(180deg, transparent 0%, rgba(0, 245, 255, 0.03) 50%, transparent 100%);
         }
-
         .positioning-main {
             font-size: clamp(24px, 5vw, 40px);
             font-weight: 400;
@@ -193,24 +143,9 @@
             margin: 0 auto 80px;
             color: rgba(255,255,255,0.85);
         }
-
-        .positioning-main strong {
-            color: var(--neon-cyan);
-            font-weight: 700;
-        }
-
-        .positioning-cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        @media (max-width: 900px) {
-            .positioning-cards {
-                grid-template-columns: 1fr;
-            }
-        }
-
+        .positioning-main strong { color: var(--neon-cyan); font-weight: 700; }
+        .positioning-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        @media (max-width: 900px) { .positioning-cards { grid-template-columns: 1fr; } }
         .p-card {
             background: var(--card-bg);
             border: 1px solid rgba(0, 245, 255, 0.2);
@@ -221,65 +156,31 @@
             position: relative;
             overflow: hidden;
         }
-
         .p-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             height: 4px;
             background: linear-gradient(90deg, var(--neon-cyan), var(--neon-orange));
             transform: scaleX(0);
             transition: transform 0.4s ease;
         }
-
         .p-card:hover {
             transform: translateY(-10px);
             border-color: var(--neon-cyan);
             box-shadow: 0 30px 80px rgba(0, 245, 255, 0.2);
         }
+        .p-card:hover::before { transform: scaleX(1); }
+        .p-card-icon { font-size: 60px; margin-bottom: 30px; }
+        .p-card-title { font-size: 28px; font-weight: 700; margin-bottom: 20px; }
+        .p-card-desc { font-size: 20px; color: rgba(255,255,255,0.7); line-height: 1.6; }
 
-        .p-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .p-card-icon {
-            font-size: 60px;
-            margin-bottom: 30px;
-        }
-
-        .p-card-title {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .p-card-desc {
-            font-size: 20px;
-            color: rgba(255,255,255,0.7);
-            line-height: 1.6;
-        }
-
-        /* ========== 差异化优势 - 数字为王 ========== */
+        /* ========== 差异化优势 ========== */
         .advantages {
-            background: 
-                radial-gradient(ellipse at 0% 50%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
-                var(--dark-bg);
+            background: radial-gradient(ellipse at 0% 50%, rgba(255, 107, 53, 0.1) 0%, transparent 50%), var(--dark-bg);
         }
-
-        .adv-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-        }
-
-        @media (max-width: 900px) {
-            .adv-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
+        .adv-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+        @media (max-width: 900px) { .adv-grid { grid-template-columns: 1fr; } }
         .adv-item {
             display: flex;
             gap: 30px;
@@ -289,12 +190,7 @@
             border: 1px solid rgba(255,255,255,0.05);
             transition: all 0.4s ease;
         }
-
-        .adv-item:hover {
-            border-color: var(--neon-cyan);
-            transform: translateX(10px);
-        }
-
+        .adv-item:hover { border-color: var(--neon-cyan); transform: translateX(10px); }
         .adv-num {
             font-size: 80px;
             font-weight: 900;
@@ -304,215 +200,78 @@
             line-height: 1;
             opacity: 0.5;
         }
+        .adv-content h3 { font-size: 28px; font-weight: 700; margin-bottom: 15px; }
+        .adv-content p { font-size: 20px; color: rgba(255,255,255,0.7); line-height: 1.6; }
 
-        .adv-content h3 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 15px;
+        /* ========== 活动案例展示 ========== */
+        .gallery-section {
+            background: radial-gradient(ellipse at 100% 50%, rgba(168, 85, 247, 0.1) 0%, transparent 50%), var(--dark-bg);
         }
-
-        .adv-content p {
-            font-size: 20px;
-            color: rgba(255,255,255,0.7);
-            line-height: 1.6;
-        }
-
-        /* ========== 给商场带来的价值 ========== */
-        .value-section {
-            text-align: center;
-        }
-
-        .value-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        @media (max-width: 1000px) {
-            .value-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .value-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .value-card {
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
             background: var(--card-bg);
-            border: 1px solid rgba(0, 245, 255, 0.15);
-            border-radius: 24px;
-            padding: 50px 30px;
+            border: 2px solid rgba(168, 85, 247, 0.5);
             transition: all 0.4s ease;
         }
-
-        .value-card:hover {
-            border-color: var(--neon-cyan);
-            box-shadow: 0 0 60px rgba(0, 245, 255, 0.3);
+        .gallery-item:hover {
             transform: scale(1.02);
+            box-shadow: 0 20px 60px rgba(168, 85, 247, 0.4);
         }
-
-        .value-num {
-            font-size: clamp(56px, 10vw, 80px);
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-orange) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1;
-            margin-bottom: 15px;
-        }
-
-        .value-unit {
-            font-size: 24px;
-            color: rgba(255,255,255,0.6);
-            margin-bottom: 20px;
-        }
-
-        .value-label {
-            font-size: 20px;
-            color: rgba(255,255,255,0.8);
-            line-height: 1.5;
-        }
-
-        /* ========== 合作模式 - 只有一种 ========== */
-        .coop-section {
-            text-align: center;
-            background: linear-gradient(180deg, transparent 0%, rgba(255, 107, 53, 0.05) 50%, transparent 100%);
-        }
-
-        .coop-box {
-            max-width: 900px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            border: 2px solid var(--neon-orange);
-            border-radius: 30px;
-            padding: 60px 50px;
-            position: relative;
-            box-shadow: 0 0 80px rgba(255, 107, 53, 0.2);
-        }
-
-        .coop-badge {
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+        .gallery-item-overlay {
             position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--neon-orange) 0%, var(--neon-pink) 100%);
-            padding: 12px 40px;
-            border-radius: 30px;
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 2px;
+            bottom: 0; left: 0; right: 0;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            opacity: 0;
+            transition: opacity 0.3s;
         }
+        .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+        .gallery-item-title { font-size: 18px; font-weight: 700; }
+        .gallery-item-desc { font-size: 14px; color: rgba(255,255,255,0.7); margin-top: 5px; }
 
-        .coop-title {
-            font-size: 36px;
-            font-weight: 900;
-            margin: 30px 0;
+        /* ========== 产品展示 ========== */
+        .products-section {
+            background: radial-gradient(ellipse at 0% 0%, rgba(0, 245, 255, 0.1) 0%, transparent 40%), var(--dark-bg);
         }
-
-        .coop-desc {
-            font-size: 22px;
-            color: rgba(255,255,255,0.7);
-            line-height: 1.8;
-            margin-bottom: 40px;
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s ease;
         }
-
-        .coop-features {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            text-align: left;
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 30px 80px rgba(0, 245, 255, 0.2);
         }
-
-        @media (max-width: 600px) {
-            .coop-features {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .coop-feature {
+        .product-image {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, rgba(0,245,255,0.05), rgba(255,107,53,0.05));
             display: flex;
             align-items: center;
-            gap: 15px;
-            font-size: 20px;
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .coop-feature:last-child {
-            border-bottom: none;
-        }
-
-        .coop-feature::before {
-            content: '✓';
-            color: var(--neon-cyan);
-            font-size: 24px;
-            font-weight: 700;
-        }
-
-        /* ========== 执行时间线 ========== */
-        .timeline-section {
-            background: 
-                radial-gradient(ellipse at 100% 0%, rgba(0, 245, 255, 0.1) 0%, transparent 40%),
-                var(--dark-bg);
-        }
-
-        .timeline {
+            justify-content: center;
             position: relative;
-            padding-left: 80px;
+            overflow: hidden;
         }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 30px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--neon-cyan), var(--neon-orange), var(--neon-pink));
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 50px;
-            padding: 30px 40px;
-            background: var(--card-bg);
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -58px;
-            top: 35px;
-            width: 20px;
-            height: 20px;
-            background: var(--neon-cyan);
-            border-radius: 50%;
-            box-shadow: 0 0 30px var(--neon-cyan);
-        }
-
-        .timeline-time {
-            font-size: 16px;
+        .product-image img { width: 100%; height: 100%; object-fit: cover; }
+        .product-info { padding: 25px; }
+        .product-name { font-size: 22px; font-weight: 700; margin-bottom: 10px; }
+        .product-desc { font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+        .product-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+        .product-tag {
+            background: rgba(0, 245, 255, 0.1);
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 13px;
             color: var(--neon-cyan);
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-
-        .timeline-title {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .timeline-desc {
-            font-size: 20px;
-            color: rgba(255,255,255,0.7);
-            line-height: 1.6;
         }
 
         /* ========== 联系方式 ========== */
@@ -521,69 +280,18 @@
             padding: 100px 40px;
             background: linear-gradient(180deg, var(--dark-bg) 0%, rgba(0, 245, 255, 0.05) 100%);
         }
+        .contact-title { font-size: clamp(32px, 6vw, 48px); font-weight: 900; margin-bottom: 30px; }
+        .contact-subtitle { font-size: 22px; color: rgba(255,255,255,0.6); margin-bottom: 50px; }
+        .contact-info { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; }
+        .contact-item { font-size: 24px; display: flex; align-items: center; gap: 15px; }
+        .contact-item svg { width: 28px; height: 28px; stroke: var(--neon-cyan); }
 
-        .contact-title {
-            font-size: clamp(32px, 6vw, 48px);
-            font-weight: 900;
-            margin-bottom: 30px;
-        }
-
-        .contact-subtitle {
-            font-size: 22px;
-            color: rgba(255,255,255,0.6);
-            margin-bottom: 50px;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            flex-wrap: wrap;
-        }
-
-        .contact-item {
-            font-size: 24px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .contact-item svg {
-            width: 28px;
-            height: 28px;
-            stroke: var(--neon-cyan);
-        }
-
-        /* ========== Footer ========== */
-        footer {
-            text-align: center;
-            padding: 40px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        footer p {
-            color: rgba(255,255,255,0.4);
-            font-size: 14px;
-        }
+        footer { text-align: center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.1); }
+        footer p { color: rgba(255,255,255,0.4); font-size: 14px; }
 
         /* ========== 动画 ========== */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* 打印优化 */
-        @media print {
-            body { background: white; color: black; }
-            .hero { background: white; }
-            .brand-name { color: black; -webkit-text-fill-color: black; }
-        }
+        .fade-in { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
@@ -597,21 +305,7 @@
                 <span>XIAO ZAO JIA</span>
             </h1>
             <p class="slogan">玩出创造力，越玩越聪明</p>
-            
-            <div class="hero-stats">
-                <div class="hero-stat">
-                    <div class="hero-stat-value">200+</div>
-                    <div class="hero-stat-label">组家庭/天</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-value">30</div>
-                    <div class="hero-stat-label">分钟停留</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-value">80%</div>
-                    <div class="hero-stat-label">连带消费</div>
-                </div>
-            </div>
+            <p class="hero-desc">国内新锐亲子益智轻体验品牌，以3D打印柔性供应链为核心，聚焦3-12岁亲子家庭</p>
         </div>
     </section>
 
@@ -682,78 +376,152 @@
         </div>
     </section>
 
-    <!-- ========== 给商场的价值 ========== -->
-    <section class="value-section">
-        <div class="section-label">03 · 给商场带来的价值</div>
-        <h2 class="section-title">数据说话<br>效果可量化</h2>
+    <!-- ========== 活动案例展示 ========== -->
+    <section class="gallery-section">
+        <div class="section-label">03 · 活动案例</div>
+        <h2 class="section-title">真实场景<br>实力说话</h2>
 
-        <div class="value-grid">
-            <div class="value-card fade-in">
-                <div class="value-num">200+</div>
-                <div class="value-unit">组家庭/天</div>
-                <div class="value-label">精准锁定3-12岁<br>高消费力亲子客群</div>
+        <div class="gallery-grid">
+            <!-- 活动1 -->
+            <div class="gallery-item fade-in">
+                <img src="images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260217122242_1175_3.webp" alt="活动现场">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">亲子互动现场</div>
+                    <div class="gallery-item-desc">孩子们专注体验益智玩具</div>
+                </div>
             </div>
-            <div class="value-card fade-in">
-                <div class="value-num">30</div>
-                <div class="value-unit">分钟停留</div>
-                <div class="value-label">远超普通零售<br>有效沉淀客流</div>
+            <!-- 活动2 -->
+            <div class="gallery-item fade-in">
+                <img src="images/%E6%9C%BA%E6%A2%B0%E6%89%8B%E6%A8%AAgif.webp" alt="机关手">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">热门产品体验</div>
+                    <div class="gallery-item-desc">机关手互动演示</div>
+                </div>
             </div>
-            <div class="value-card fade-in">
-                <div class="value-num">80%</div>
-                <div class="value-unit">连带消费</div>
-                <div class="value-label">体验后产生餐饮<br>零售等消费</div>
+            <!-- 活动3 -->
+            <div class="gallery-item fade-in">
+                <img src="images/20260224-115355.jpg" alt="活动现场">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">商场摊位实拍</div>
+                    <div class="gallery-item-desc">整洁专业的摊位布置</div>
+                </div>
             </div>
-            <div class="value-card fade-in">
-                <div class="value-num">7</div>
-                <div class="value-unit">天迭代</div>
-                <div class="value-label">限定款开发周期<br>配合商场活动</div>
+            <!-- 活动4 -->
+            <div class="gallery-item fade-in">
+                <img src="images/20260224-115431.jpg" alt="活动现场">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">产品陈列展示</div>
+                    <div class="gallery-item-desc">丰富的产品矩阵</div>
+                </div>
+            </div>
+            <!-- 活动5 -->
+            <div class="gallery-item fade-in">
+                <img src="images/20260224-115439.jpg" alt="活动现场">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">顾客互动瞬间</div>
+                    <div class="gallery-item-desc">家长孩子共同参与</div>
+                </div>
+            </div>
+            <!-- 活动6 -->
+            <div class="gallery-item fade-in">
+                <img src="images/20260224-115444.jpg" alt="活动现场">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">品牌形象展示</div>
+                    <div class="gallery-item-desc">统一的视觉识别系统</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== 合作模式 ========== -->
-    <section class="coop-section">
-        <div class="section-label">04 · 合作模式</div>
-        <h2 class="section-title">节假日主题快闪</h2>
+    <!-- ========== 产品展示 ========== -->
+    <section class="products-section">
+        <div class="section-label">04 · 产品矩阵</div>
+        <h2 class="section-title">3D打印益智玩具<br>看得见的品质</h2>
 
-        <div class="coop-box fade-in">
-            <div class="coop-badge">我们只做这个</div>
-            <h3 class="coop-title">3-7天档期 · 主题亲子活动</h3>
-            <p class="coop-desc">
-                配合商场节日营销，提供完整的亲子互动内容<br>
-                为商场引流、制造话题、打造差异化亮点
-            </p>
-            <div class="coop-features">
-                <div class="coop-feature">中庭/外广场核心点位 5-10㎡</div>
-                <div class="coop-feature">档期场地费 + 流水倒扣</div>
-                <div class="coop-feature">专属主题亲子活动内容</div>
-                <div class="coop-feature">联合营销、联合引流</div>
-                <div class="coop-feature">每周更新产品矩阵</div>
-                <div class="coop-feature">专业体验师团队</div>
+        <div class="products-grid">
+            <!-- 产品1 -->
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="images/32323.webp" alt="产品">
+                </div>
+                <div class="product-info">
+                    <h4 class="product-name">益智拼装系列</h4>
+                    <p class="product-desc">锻炼空间想象力，培养动手能力</p>
+                    <div class="product-tags">
+                        <span class="product-tag">3-6岁</span>
+                        <span class="product-tag">益智</span>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- ========== 执行时间线 ========== -->
-    <section class="timeline-section">
-        <div class="section-label">05 · 落地执行</div>
-        <h2 class="section-title">签约即落地<br>2周内开业</h2>
-
-        <div class="timeline">
-            <div class="timeline-item fade-in">
-                <div class="timeline-time">第1周 · 筹备期</div>
-                <h4 class="timeline-title">点位定制化设计 + 人员培训</h4>
-                <p class="timeline-desc">完成设计方案、物料制作、产品备货、进场手续</p>
+            <!-- 产品2 -->
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="images/6270196c7afabce6f0a80b48c4efb68c.webp" alt="产品">
+                </div>
+                <div class="product-info">
+                    <h4 class="product-name">机关互动系列</h4>
+                    <p class="product-desc">机械结构探索，激发创造思维</p>
+                    <div class="product-tags">
+                        <span class="product-tag">6-9岁</span>
+                        <span class="product-tag">创意</span>
+                    </div>
+                </div>
             </div>
-            <div class="timeline-item fade-in">
-                <div class="timeline-time">第2周 · 落地期</div>
-                <h4 class="timeline-title">正式开业运营</h4>
-                <p class="timeline-desc">点位搭建、现场调试、配合商场当期营销活动</p>
+            <!-- 产品3 -->
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="images/IMG_1447.webp" alt="产品">
+                </div>
+                <div class="product-info">
+                    <h4 class="product-name">挑战进阶系列</h4>
+                    <p class="product-desc">复杂结构组装，提升专注力</p>
+                    <div class="product-tags">
+                        <span class="product-tag">9-12岁</span>
+                        <span class="product-tag">挑战</span>
+                    </div>
+                </div>
             </div>
-            <div class="timeline-item fade-in">
-                <div class="timeline-time">运营期</div>
-                <h4 class="timeline-title">持续优化 + 数据反馈</h4>
-                <p class="timeline-desc">每月运营报告、产品更新、主题活动落地</p>
+            <!-- 产品4 -->
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="images/WhatsApp%20Image%202026-02-07%20at%202.15.02%20PM.webp" alt="产品">
+                </div>
+                <div class="product-info">
+                    <h4 class="product-name">节日限定系列</h4>
+                    <p class="product-desc">应景主题设计，节日氛围感拉满</p>
+                    <div class="product-tags">
+                        <span class="product-tag">节日限定</span>
+                        <span class="product-tag">收藏</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 产品5 -->
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="images/f890fe3559de4e64165e73db261ca5e.webp" alt="产品">
+                </div>
+                <div class="product-info">
+                    <h4 class="product-name">亲子互动系列</h4>
+                    <p class="product-desc">家长孩子一起玩，增进亲子关系</p>
+                    <div class="product-tags">
+                        <span class="product-tag">亲子</span>
+                        <span class="product-tag">互动</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 产品6 -->
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="images/webwxgetmsgimg.webp" alt="产品">
+                </div>
+                <div class="product-info">
+                    <h4 class="product-name">爆款热销系列</h4>
+                    <p class="product-desc">最受欢迎的单品，复购率超高</p>
+                    <div class="product-tags">
+                        <span class="product-tag">热销</span>
+                        <span class="product-tag">爆款</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
